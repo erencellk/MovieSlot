@@ -1,43 +1,107 @@
-a{
+a {
     text-decoration: none;
-    font-size: x-large;
+    font-size: small;
     padding: 10px;
     display: block;
-    border: 1px solid #ccc;
-    color:black;
+    color: black;
 }
-nav{
+
+nav {
     display: flex;
     flex-direction: column;
     width: 500px;
 
 }
-.menu-toggle{
+
+.menu-toggle {
     font-size: 28px;
     cursor: pointer;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    margin-bottom:10px ;
-
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: none;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.menu-toggle:hover{
-    background-color: #e0e0e0;
+
+.menu-toggle:hover {
+    background: none;
+    box-shadow: none;
 }
-#menu{
+
+#menu {
     display: none;
     flex-direction: column;
-    width: 220px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 120px;
+    background-color: white;
+    padding: 80px 10px 20px 10px;
+    z-index: 90;
+    gap: 15px;
+    margin-top: 30px;
+    overflow-y: auto;
+
+    border-right: none;
+    box-shadow: none;
 }
 
-#menu a:hover{
+#menu a:hover {
     background-color: #f0f0f0;
-    color:#000;
+    color: #007bff;
+}
+
+.film-afis {
+    width: 200px;
+    height: 300px;
+}
+
+.vitrin {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: flex-start;
+    padding: 20px;
+    margin-left: 100px;
+}
+
+.film-kart {
+    width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.2s ease;
+}
+
+.film-kart:hover {
+    transform: scale(1.03);
+}
+
+.film-afis {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
