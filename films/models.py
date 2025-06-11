@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 
 
 # Genre Class Baslangıcı
@@ -43,7 +43,7 @@ class Film(models.Model):
     director = models.ForeignKey('Director', on_delete=models.CASCADE)
     duration = models.IntegerField()
     language = models.CharField(max_length=50)
-    rating = models.FloatField()
+    average_rating = models.FloatField()
     actors = models.ManyToManyField(Actor)  # many-to-many ilişkisi
 
     def __str__(self):
