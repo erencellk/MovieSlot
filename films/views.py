@@ -3,7 +3,7 @@ from http.client import HTTPResponse
 from django.shortcuts import render
 
 from django.contrib.auth.hashers import make_password
-from .models import Member
+from .models import Member , Film
 from django.http import HttpResponse
 
 
@@ -48,10 +48,12 @@ def home(request):  # herhangi bir giriş kaydı basarılı ise bu mesaj goster�
     """)
 
 
-def home(
-        request):  # html şablonlarımızı kullancıya gösterir. en son def home bu kısım oldugu icin localhost ekranımızda html dosyamız gozukecek.
+
+
+def home(request):
+    one_cikanlar = Film.objects.order_by('rating')
     context = {
-        "title": "MovieSlot",
+        'one_cikanlar': one_cikanlar
     }
     return render(request, 'films/index.html', context)
 

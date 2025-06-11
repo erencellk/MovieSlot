@@ -44,7 +44,7 @@ class Film(models.Model):
     duration = models.IntegerField()
     language = models.CharField(max_length=50)
     average_rating = models.FloatField()
-    actors = models.ManyToManyField(Actor)  # many-to-many ilişkisi
+    actors = models.ManyToManyField(Actor , blank=True)  # many-to-many ilişkisi
 
     def __str__(self):
         return self.title
