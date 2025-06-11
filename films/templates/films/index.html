@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="icon" type="image/png" href="/media/favicon.png">
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+</head>
+<body>
+<span class="menu-toggle" onclick="toggleMenu()">☰</span>
+<nav id="menu">
+    <a href="films/static/filmler.html">Filmler</a>
+    <a href="films/static/oyuncular.html">Oyuncular</a>
+    <a href="films/static/yönetmenler.html">Yönetmenler</a>
+    <a href="films/static/türler.html">Türler</a>
+    <a href="films/static/üyeler.html">Üyeler</a>
+    <a href="films/static/izlemelistesi.html">İzleme Listesi</a>
+    <a href="films/static/yorumlar.html">Yorumlar</a>
+    <a href="films/static/puanlama.html">Puanlama</a>
+    <a href="films/static/filmgörselleri.html">Film Görselleri</a>
+
+</nav>
+<script src="{% static 'films/eren.js' %}"></script>
+</body>
+</html>
