@@ -26,31 +26,32 @@ def create_member(info):
     member.save()  # olusturulan nesne veri tabanına eklendi.
 
 
-def home(request):
+def home(request):  # herhangi bir giriş kaydı basarılı ise bu mesaj gosterılecek.
     return HttpResponse("""
     <html>
     <body>
     <div style="display:flex; justify-content:center; align-items:center;" >
-    
+
     <h1>Welcome home page!</h1>
     </div>
-    
-    
-    
+
+
+
     </body>
-    
-    
-    
-    
-    
+
+
+
+
+
     </html>
-    
+
     """)
 
 
+def home(
+        request):  # html şablonlarımızı kullancıya gösterir. en son def home bu kısım oldugu icin localhost ekranımızda html dosyamız gozukecek.
+    context = {
+        "title": "MovieSlot",
+    }
+    return render(request, 'films/index.html', context)
 
-
-
-
-
-    # herhangi bir giriş kaydı basarılı ise bu mesaj gosterılecek.
