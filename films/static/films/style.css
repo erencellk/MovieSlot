@@ -1,0 +1,43 @@
+a{
+    text-decoration: none;
+    font-size: x-large;
+    padding: 10px;
+    display: block;
+    border: 1px solid #ccc;
+    color:black;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+
+}
+.menu-toggle{
+    font-size: 28px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-bottom:10px ;
+
+}
+
+.menu-toggle:hover{
+    background-color: #e0e0e0;
+}
+#menu{
+    display: none;
+    flex-direction: column;
+    width: 220px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+#menu a:hover{
+    background-color: #f0f0f0;
+    color:#000;
+}
