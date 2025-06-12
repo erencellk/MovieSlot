@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en" style="background-color: azure">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+
+    <title>AnaSayfa</title>
+</head>
+<body>
+
+    <h3 style="text-align:center;margin-top: 20px">ANASAYFAYA HOSGELDİNİZ!</h3>
+<span class="menu-toggle" onclick="toggleMenu()">☰</span>
+<nav id="menu">
+    <a href="filmler.html">Filmler</a> <br>
+    <a href="oyuncular.html">Oyuncular</a> <br>
+    <a href="yönetmenler.html">Yönetmenler</a> <br>
+    <a href="türler.html">Türler</a> <br>
+    <a href="üyeler.html">Üyeler</a> <br>
+    <a href="izlemelistesi.html">İzleme Listesi</a> <br>
+    <a href="yorumlar.html">Yorumlar</a> <br>
+    <a href="puanlama.html">Puanlama</a> <br>
+    <a href="filmgörselleri.html">Film Görselleri</a>
+
+</nav>
+<script src="{% static 'films/eren.js' %}"></script>
+</body>
+</html>
