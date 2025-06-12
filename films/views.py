@@ -3,7 +3,8 @@ from http.client import HTTPResponse
 from django.shortcuts import render
 
 from django.contrib.auth.hashers import make_password
-from .models import Member , Film
+from .models import Member
+from .models import  Film
 from django.http import HttpResponse
 
 
@@ -26,34 +27,18 @@ def create_member(info):
     member.save()  # olusturulan nesne veri tabanına eklendi.
 
 
-def home(request):  # herhangi bir giriş kaydı basarılı ise bu mesaj gosterılecek.
-    return HttpResponse("""
-    <html>
-    <body>
-    <div style="display:flex; justify-content:center; align-items:center;" >
-
-    <h1>Welcome home page!</h1>
-    </div>
-
-
-
-    </body>
-
-
-
-
-
-    </html>
-
-    """)
 
 
 
 
 def home(request):
-    one_cikanlar = Film.objects.order_by('rating')
-    context = {
-        'one_cikanlar': one_cikanlar
-    }
-    return render(request, 'films/index.html', context)
+    return render(request, 'films/anasayfa.html')
 
+def filmler_view(request):
+
+    encokizlenenfilmler = Film.objects.order_by('average_rating')
+    context = {
+        'encokizlenenfilmler' : encokizlenenfilmler
+    }
+
+    return render(request, 'films/filmler.html' , context)
