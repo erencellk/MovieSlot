@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="background-color:azure ">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieSlot</title>
+    <link rel="icon" type="image/png" href="/media/favicon.png">
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+</head>
+<body>
+<span class="menu-toggle" onclick="toggleMenu()">☰</span>
+<nav id="menu">
+    <a href="films/static/filmler.html">Filmler</a> <br>
+    <a href="films/static/oyuncular.html">Oyuncular</a> <br>
+    <a href="films/static/yönetmenler.html">Yönetmenler</a> <br>
+    <a href="films/static/türler.html">Türler</a> <br>
+    <a href="films/static/üyeler.html">Üyeler</a> <br>
+    <a href="films/static/izlemelistesi.html">İzleme Listesi</a> <br>
+    <a href="films/static/yorumlar.html">Yorumlar</a> <br>
+    <a href="films/static/puanlama.html">Puanlama</a> <br>
+    <a href="films/static/filmgörselleri.html">Film Görselleri</a>
+
+</nav>
+
+
+<h2 style="text-align: center">🎬 Öne Çıkan Filmler</h2>
+<div class="vitrin">
+    {% for film in encokizlenenfilmler %}
+        <div class="film-kart">
+            <img src="{{ film.image.url }}" alt="{{ film.title }}" class="film-afis">
+            <h3>{{ film.title }}</h3>
+            <p title="{{ film.description }}">{{ film.description|truncatewords:15 }}</p>
+            <span title="{{ film.description }}">⭐ {{ film.average_rating }}</span>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{% static 'films/eren.js' %}"></script>
+</body>
+</html>
