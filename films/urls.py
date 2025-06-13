@@ -7,5 +7,8 @@ urlpatterns = [
 
     path('', views.home, name='home'),
     path('filmler.html/', views.filmler_view , name='filmler'),
+
+    path('oyuncular.html/', views.oyuncular_home , name='oyuncular'),
+
 ]
 

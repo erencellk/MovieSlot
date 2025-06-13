@@ -106,3 +106,18 @@ nav {
     border-radius: 6px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+#vitrin_oyuncular{
+    display: flex;
+    flex-wrap: wrap; /* sıgmayan elemanların asagı sıralanmasını saglar*/
+    justify-content: flex-start;
+    text-align: center;
+    font-size: large;
+    padding: 20px;
+    margin: 100px;
+}
+#oyuncu-kart{
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}

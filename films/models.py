@@ -23,6 +23,7 @@ class Actor(models.Model):
     biography = models.TextField()
     birthday = models.DateField()
     films = models.ManyToManyField("Film")  # ard arda oldukları ıcın bır tanesını boyle declare ettım.
+    actor_picture = models.ImageField(upload_to="images/" , blank=True , null=True)
 
     def __str__(self):
         return self.name + " - " + self.surname

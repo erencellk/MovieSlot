@@ -3,7 +3,7 @@ from http.client import HTTPResponse
 from django.shortcuts import render
 
 from django.contrib.auth.hashers import make_password
-from .models import Member
+from .models import Member, Actor
 from .models import  Film
 from django.http import HttpResponse
 
@@ -42,3 +42,11 @@ def filmler_view(request):
     }
 
     return render(request, 'films/filmler.html' , context)
+
+def oyuncular_home(request):
+    oyuncular= Actor.objects.all()
+    context = {
+        'oyuncular' : oyuncular
+    }
+
+    return render(request, 'films/oyuncular.html' , context)
