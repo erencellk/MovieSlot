@@ -1,10 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Oyuncular</title>
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
 </head>
 <body>
+<span class="menu-toggle" onclick="toggleMenu()">☰</span>
+<nav id="menu">
+    <a href="filmler.html">Filmler</a> <br>
+    <a href="films/static/oyuncular.html">Oyuncular</a> <br>
+    <a href="films/static/yönetmenler.html">Yönetmenler</a> <br>
+    <a href="films/static/türler.html">Türler</a> <br>
+    <a href="films/static/üyeler.html">Üyeler</a> <br>
+    <a href="films/static/izlemelistesi.html">İzleme Listesi</a> <br>
+    <a href="films/static/yorumlar.html">Yorumlar</a> <br>
+    <a href="films/static/puanlama.html">Puanlama</a> <br>
+    <a href="filmgörselleri.html">Film Görselleri</a>
 
+</nav>
+
+<h2 style="text-align: center">Oyuncular</h2>
+<div id="vitrin_oyuncular">
+    {% for oyuncu in oyuncular %}
+        <div id="oyuncu-kart">
+
+
+            <p>{{ oyuncu.name }}</p>
+            <p>{{ oyuncu.surname }}</p>
+            <p>{{ oyuncu.biography }}</p>
+            <p>{{ oyuncu.birthday }}</p>
+            <img src="{{ oyuncu.actor_picture }}" alt="oyuncu_fotografi">
+
+        </div>
+
+    {% endfor %}
+
+
+</div>
+
+<script src="{% static 'films/eren.js' %}"></script>
 </body>
 </html>

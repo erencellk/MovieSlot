@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" style="background-color:azure ">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>MovieSlot</title>
@@ -10,7 +10,7 @@
 <body>
 <span class="menu-toggle" onclick="toggleMenu()">☰</span>
 <nav id="menu">
-    <a href="films/static/filmler.html">Filmler</a> <br>
+    <a href="filmler.html">Filmler</a> <br>
     <a href="films/static/oyuncular.html">Oyuncular</a> <br>
     <a href="films/static/yönetmenler.html">Yönetmenler</a> <br>
     <a href="films/static/türler.html">Türler</a> <br>
@@ -18,7 +18,7 @@
     <a href="films/static/izlemelistesi.html">İzleme Listesi</a> <br>
     <a href="films/static/yorumlar.html">Yorumlar</a> <br>
     <a href="films/static/puanlama.html">Puanlama</a> <br>
-    <a href="films/static/filmgörselleri.html">Film Görselleri</a>
+    <a href="filmgörselleri.html">Film Görselleri</a>
 
 </nav>
 
@@ -34,6 +34,7 @@
         </div>
     {% endfor %}
 </div>
+
 
 <script src="{% static 'films/eren.js' %}"></script>
 </body>
