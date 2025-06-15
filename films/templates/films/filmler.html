@@ -9,8 +9,9 @@
 </head>
 <body>
 <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-<nav id="menu">
-    <a href="filmler.html">Filmler</a> <br>
+
+<nav class="liste-menu">
+    <a href="filmler.html">IMDB En İyi 25 Film</a> <br>
     <a href="films/static/oyuncular.html">Oyuncular</a> <br>
     <a href="films/static/yönetmenler.html">Yönetmenler</a> <br>
     <a href="films/static/türler.html">Türler</a> <br>
@@ -19,17 +20,19 @@
     <a href="films/static/yorumlar.html">Yorumlar</a> <br>
     <a href="films/static/puanlama.html">Puanlama</a> <br>
     <a href="filmgörselleri.html">Film Görselleri</a>
-
 </nav>
 
 
-<h2 style="text-align: center">🎬 Öne Çıkan Filmler</h2>
+<h2 style="text-align: center; font-weight: lighter ">🎬 IMDB En İyi 25 Film</h2>
 <div class="vitrin">
     {% for film in encokizlenenfilmler %}
         <div class="film-kart">
             <img src="{{ film.image.url }}" alt="{{ film.title }}" class="film-afis">
-            <h3>{{ film.title }}</h3>
+            <h3 class="film-header"><a class="film-href" href="#">{{ film.title }}</a></h3>
             <p title="{{ film.description }}">{{ film.description|truncatewords:15 }}</p>
+            <span>Dil : {{ film.language }}</span>
+            <span>Yönetmen : {{ film.director }}</span> <br>
+            <span> {{ film.duration }}dk</span> <br>
             <span title="{{ film.description }}">⭐ {{ film.average_rating }}</span>
         </div>
     {% endfor %}
