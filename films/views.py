@@ -36,7 +36,7 @@ def home(request):
 
 def filmler_view(request):
 
-    encokizlenenfilmler = Film.objects.order_by('average_rating')
+    encokizlenenfilmler = Film.objects.order_by('-average_rating')
     context = {
         'encokizlenenfilmler' : encokizlenenfilmler
     }
