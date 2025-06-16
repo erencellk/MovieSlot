@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 # Genre Class Baslangıcı
 class Genre(models.Model):
     name = models.CharField(max_length=100)
@@ -23,7 +22,7 @@ class Actor(models.Model):
     biography = models.TextField()
     birthday = models.DateField()
     films = models.ManyToManyField("Film")  # ard arda oldukları ıcın bır tanesını boyle declare ettım.
-    actor_picture = models.ImageField(upload_to="images/" , blank=True , null=True)
+    actor_picture = models.ImageField(upload_to="images/", blank=True, null=True)
 
     def __str__(self):
         return self.name + " - " + self.surname
@@ -38,14 +37,13 @@ class Actor(models.Model):
 class Film(models.Model):
     title = models.CharField(max_length=100)  # CharField = kısa metinler için kullanılır.
     description = models.TextField()  # TextField() = uzun metinler için kullanılır.
-    release_date = models.DateField()
+
     image = models.ImageField(upload_to="images/", null=True, blank=True)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
-    director = models.ForeignKey('Director', on_delete=models.CASCADE)
+
     duration = models.IntegerField()
     language = models.CharField(max_length=50)
     average_rating = models.FloatField()
-    actors = models.ManyToManyField(Actor , blank=True)  # many-to-many ilişkisi
 
     def __str__(self):
         return self.title
