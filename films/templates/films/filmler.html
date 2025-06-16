@@ -42,7 +42,7 @@
     {% for film in encokizlenenfilmler %}
         <div class="film-kart">
             <img src="{{ film.image.url }}" alt="{{ film.title }}" class="film-afis">
-            <h3 class="film-header"><a class="film-href" href="#">{{ film.title }}</a></h3>
+            <h3 class="film-header"><a class="film-href" href="{% url 'film_more_info' film.pk %}">{{ film.title }}</a></h3>
             <p title="{{ film.description }}">{{ film.description|truncatewords:15 }}</p>
             <span>Dil : {{ film.language }}</span> <br>
             <span>Tür:{{ film.genre }}</span> <br>
