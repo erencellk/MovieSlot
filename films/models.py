@@ -37,10 +37,8 @@ class Actor(models.Model):
 class Film(models.Model):
     title = models.CharField(max_length=100)  # CharField = kısa metinler için kullanılır.
     description = models.TextField()  # TextField() = uzun metinler için kullanılır.
-
     image = models.ImageField(upload_to="images/", null=True, blank=True)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
-
     duration = models.IntegerField()
     language = models.CharField(max_length=50)
     average_rating = models.FloatField()
@@ -53,6 +51,35 @@ class Film(models.Model):
         verbose_name_plural = 'Films'
     # Film Class Bitiş
 
+#Class FilmMoreInfo baslangıcı
+class FilmMoreInfo(models.Model):
+    film = models.OneToOneField(Film, on_delete=models.CASCADE)
+    youtube_trailer_url = models.URLField(max_length=500)
+
+    def __str__(self):
+        return self.film.title + " - " + self.youtube_trailer_url
+
+    class Meta:
+        verbose_name = 'FilmMoreInfo'
+        verbose_name_plural = 'FilmMoreInfos'
+
+#Class FılmMoreInfo bitiş
+
+
+#class FilmComment baslangıcı
+class FilmComment(models.Model):
+    film = models.ForeignKey(Film, on_delete=models.CASCADE, related_name='comments')
+    user_name = models.CharField(max_length=100)
+    comment_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f" Yorum : {self.user_name} - {self.comment_text}"
+
+    class Meta:
+        verbose_name = 'FilmComment'
+        verbose_name_plural = 'FilmComments'
+#Class FilmComment bitis
 
 # Director Class Baslangıcı
 class Director(models.Model):
