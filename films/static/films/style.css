@@ -1,5 +1,5 @@
 /* Tüm bağlantılar */
- body a {
+body a {
     text-decoration: none;
     font-size: small;
     padding: 10px;
@@ -32,9 +32,6 @@
 }
 
 
-
-
-
 .liste-menu a {
 
     font-weight: 500;
@@ -51,7 +48,7 @@
 
 .liste-menu a:hover {
 
-    color:white;
+    color: white;
     border-radius: 8px;
 
     transform: scale(1.2);
@@ -139,8 +136,6 @@ body {
 }
 
 
-
-
 .auth-buttons {
     display: flex;
     gap: 12px;
@@ -170,25 +165,55 @@ body {
     text-align: center;
 
 }
-@media (max-width: 768px) {  /* responsive tasarım icin*/
-  .liste-menu {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-      position: relative;
-  }
 
-  .nav-left,
-  .nav-right {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    width: 100%;
-  }
+@media (max-width: 768px) {
+    /* responsive tasarım icin*/
+    .liste-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        position: relative;
+    }
 
-  .auth-buttons {
-    justify-content: flex-start;
-    width: 100%;
-  }
+    .nav-left,
+    .nav-right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .auth-buttons {
+        justify-content: flex-start;
+        width: 100%;
+    }
 }
 
+.filminfo-afis{
+
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.film-detay-kart{
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.film-bilgi p{
+    margin: 5px 0;
+    font-size: 16px;
+}
+.film-title{
+    font-size: 24px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
