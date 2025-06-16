@@ -16,17 +16,25 @@
 <body>
 
 
+
 <nav class="liste-menu">
-    <a href="filmler.html"><i class="fa-solid fa-star"></i> IMDB En İyi 25 Film</a><br>
-    <a href="films/static/oyuncular.html"><i class="fa-solid fa-user"></i> Oyuncular</a><br>
-    <a href="films/static/yönetmenler.html"><i class="fa-solid fa-video"></i> Yönetmenler</a><br>
-    <a href="films/static/türler.html"><i class="fa-solid fa-tags"></i> Türler</a><br>
-    <a href="films/static/üyeler.html"><i class="fa-solid fa-users"></i> Üyeler</a><br>
-    <a href="films/static/izlemelistesi.html"><i class="fa-solid fa-list"></i> İzleme Listesi</a><br>
-    <a href="films/static/yorumlar.html"><i class="fa-solid fa-comment-dots"></i> Yorumlar</a><br>
-    <a href="films/static/puanlama.html"><i class="fa-solid fa-star-half-stroke"></i> Puanlama</a><br>
-    <a href="filmgörselleri.html"><i class="fa-solid fa-image"></i> Film Görselleri</a><br>
+    <div class="nav-left">
+        <a href="filmler.html"><i class="fa-solid fa-star"></i> IMDB En İyi 25 Film</a>
+        <a href="oyuncular.html"><i class="fa-solid fa-user"></i> Oyuncular</a>
+        <a href="yönetmenler.html"><i class="fa-solid fa-video"></i> Yönetmenler</a>
+        <a href="türler.html"><i class="fa-solid fa-tags"></i> Türler</a>
+        <a href="üyeler.html"><i class="fa-solid fa-users"></i> Üyeler</a>
+        <a href="izlemelistesi.html"><i class="fa-solid fa-list"></i> İzleme Listesi</a>
+        <a href="yorumlar.html"><i class="fa-solid fa-comment-dots"></i> Yorumlar</a>
+        <a href="puanlama.html"><i class="fa-solid fa-star-half-stroke"></i> Puanlama</a>
+        <a href="filmgörselleri.html"><i class="fa-solid fa-image"></i> Film Görselleri</a>
+    </div>
+    <div class="nav-right">
+        <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Giriş Yap</a>
+        <a href="/register"><i class="fa-solid fa-user-plus"></i> Kayıt Ol</a>
+    </div>
 </nav>
+
 <br><br><br>
 
 <h2 id="baslik-imdb">🎬 IMDB En İyi 25 Film</h2>
@@ -36,7 +44,7 @@
             <img src="{{ film.image.url }}" alt="{{ film.title }}" class="film-afis">
             <h3 class="film-header"><a class="film-href" href="#">{{ film.title }}</a></h3>
             <p title="{{ film.description }}">{{ film.description|truncatewords:15 }}</p>
-            <span>Dil : {{ film.language }}</span>
+            <span>Dil : {{ film.language }}</span> <br>
             <span>Tür:{{ film.genre }}</span> <br>
             <span> {{ film.duration }}dk</span> <br>
             <span title="{{ film.description }}">⭐ {{ film.average_rating }}</span>
