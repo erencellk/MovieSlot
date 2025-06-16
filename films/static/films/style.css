@@ -8,52 +8,24 @@ a {
     font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace
 }
 
-/* Hamburger menü ikonu */
-.menu-toggle {
-    width: 40px;
-    height: 40px;
-    font-size: 28px;
-    line-height: 40px;
-    text-align: center;
-    display: inline-block;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    background: none;
-    border: none;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    color: #333;
-    background-color: transparent;
-}
-
-
-.menu-toggle.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.menu-toggle:hover {
-    background: none;
-    box-shadow: none;
-
-}
 
 /* Menü - varsayılan olarak gizli */
 .liste-menu {
-    position: absolute; /* veya default olarak hiç yazmazsan 'static' olur */
-    top: 80px; /* hamburger menünün biraz altı */
+    display: flex; /* yan yana sıralanması*/
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /*içerikler taşarsa alta gecebilir*/
+    gap: 15px; /* menü elemanları arasına bosluk*/
+    padding: 15px 30px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
     left: 0;
-    z-index: 90;
-    background: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-    transform: translateX(-100%);
-    pointer-events: none;
-    width: 100px;
+    width: 100%;
+    z-index: 999;
+
+
 }
 
 
@@ -78,7 +50,7 @@ a {
 
 .liste-menu a:hover {
     background-color: #f0f0f0;
-    color: #007bff;
+    color: #00ADB5;
 }
 
 /* Film kart yapısı */
@@ -88,31 +60,34 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border-radius: 20px;
     padding: 15px;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .film-kart:hover {
-    transform: scale(1.03);
+    transform: scale(1.03); /* kartın üstüne gelince büyüme efekti veriyoruz.*/
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 .film-afis {
-    width: 200px;
-    height: 300px;
+    width: 100%;
+    height: 340px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
 }
 
 /* Vitrin düzeni */
 .vitrin {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
-    justify-content: flex-start;
     padding: 20px;
     margin-left: 100px;
 }
@@ -134,10 +109,6 @@ a {
     width: 200px;
 }
 
-.menu-toggle open {
-    width: 40px;
-    height: 40px;
-}
 
 .film-href {
     font-size: large;
@@ -145,7 +116,29 @@ a {
     font-weight: normal;
 }
 
+#baslik-imdb {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: x-large;
+    margin: 40px 0 10px 0;
+    color: #393E46;
+}
 
 
+body {
+    font-family: 'Poppins', sans-serif;
 
+   background-color: #e0e0e0; !important;
+
+
+    color: #222831;
+    margin: 0;
+    padding: 0;
+
+}
+
+.liste-menu a:hover, .liste-menu a.active {
+    background-color: #00adb5;
+    color: #ffffff;
+}
 
