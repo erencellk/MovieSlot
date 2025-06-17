@@ -51,7 +51,8 @@ class Film(models.Model):
         verbose_name_plural = 'Films'
     # Film Class Bitiş
 
-#Class FilmMoreInfo baslangıcı
+
+# Class FilmMoreInfo baslangıcı
 class FilmMoreInfo(models.Model):
     film = models.OneToOneField(Film, on_delete=models.CASCADE)
     youtube_trailer_url = models.URLField(max_length=500)
@@ -63,15 +64,17 @@ class FilmMoreInfo(models.Model):
         verbose_name = 'FilmMoreInfo'
         verbose_name_plural = 'FilmMoreInfos'
 
-#Class FılmMoreInfo bitiş
+
+# Class FılmMoreInfo bitiş
 
 
-#class FilmComment baslangıcı
+# class FilmComment baslangıcı
 class FilmComment(models.Model):
     film = models.ForeignKey(Film, on_delete=models.CASCADE, related_name='comments')
     user_name = models.CharField(max_length=100)
     comment_text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return f" Yorum : {self.user_name} - {self.comment_text}"
@@ -79,7 +82,9 @@ class FilmComment(models.Model):
     class Meta:
         verbose_name = 'FilmComment'
         verbose_name_plural = 'FilmComments'
-#Class FilmComment bitis
+
+
+# Class FilmComment bitis
 
 # Director Class Baslangıcı
 class Director(models.Model):
