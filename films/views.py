@@ -53,11 +53,14 @@ def film_more_info(request, pk):
     more_info = FilmMoreInfo.objects.filter(film=film).first()
     comments = FilmComment.objects.filter(film=film).order_by('-created_at')
 
-    if (request.method == "POST"):
-        name = request.POST['name']
-        comment = request.POST['comment']
-        if name and comment:  # eğer her ıkısı de doluysa anlamında ıkısı de tru donuyorsa
-            FilmComment.objects.create(film=film, user_name=name, comment_text=comment)
+    if request.method == "POST":
+        ad = request.POST.get('kullanici_adi')
+        soyad = request.POST.get('kullanici_soyadi')
+        yorum = request.POST.get('yorum')
+
+        if ad and soyad and yorum:
+            tam_ad = ad + " " + soyad
+            FilmComment.objects.create(film=film, user_name=tam_ad, comment_text=yorum)
             return redirect('film_more_info', pk=pk)
 
     return render(request, 'films/film_more_info.html', {
