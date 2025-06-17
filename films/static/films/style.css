@@ -1,39 +1,32 @@
-/* Tüm bağlantılar */
+
 body a {
     text-decoration: none;
     font-size: small;
     padding: 10px;
     display: block;
     color: black;
-    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace
+    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
 }
 
-
-/* Menü - varsayılan olarak gizli */
+/* Menü */
 .liste-menu {
-    display: flex; /* yan yana sıralanması*/
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /*içerikler taşarsa alta gecebilir*/
-    gap: 15px; /* menü elemanları arasına bosluk*/
     padding: 15px 40px;
-
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     z-index: 999;
-
-
     background: linear-gradient(to right, #1f1f2f, #2c2c3c);
-
-
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-
 .liste-menu a {
-
     font-weight: 500;
     padding: 10px;
     border-radius: 6px;
@@ -45,14 +38,27 @@ body a {
     transition: color 0.3s;
 }
 
-
 .liste-menu a:hover {
-
     color: white;
     border-radius: 8px;
-
     transform: scale(1.2);
+}
 
+.nav-left,
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.nav-left {
+    flex: 1;
+}
+
+.nav-right {
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 /* Film kart yapısı */
@@ -72,7 +78,7 @@ body a {
 }
 
 .film-kart:hover {
-    transform: scale(1.03); /* kartın üstüne gelince büyüme efekti veriyoruz.*/
+    transform: scale(1.03);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -85,16 +91,14 @@ body a {
     margin-bottom: 15px;
 }
 
-/* Vitrin düzeni */
 .vitrin {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
-    padding: 20px;
-    margin-left: 100px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
-/* Oyuncu kart alanı */
 #vitrin_oyuncular {
     display: flex;
     flex-wrap: wrap;
@@ -111,7 +115,6 @@ body a {
     width: 200px;
 }
 
-
 .film-href {
     font-size: large;
     font-family: Calibri;
@@ -126,7 +129,6 @@ body a {
     color: #393E46;
 }
 
-
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #e0e0e0 !important;
@@ -135,12 +137,10 @@ body {
     padding: 0;
 }
 
-
 .auth-buttons {
     display: flex;
     gap: 12px;
     flex-direction: column;
-
 }
 
 .auth-buttons a {
@@ -152,22 +152,12 @@ body {
     white-space: nowrap;
 }
 
-
-.nav-left, .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-
 .liste-menu i:hover {
     width: 18px;
     text-align: center;
-
 }
 
 @media (max-width: 768px) {
-    /* responsive tasarım icin*/
     .liste-menu {
         flex-direction: column;
         align-items: flex-start;
@@ -190,14 +180,11 @@ body {
 }
 
 .filminfo-afis {
-
     width: 300px;
     height: 400px;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-
 }
 
 .film-detay-kart {
@@ -242,7 +229,7 @@ body {
     justify-content: center;
 }
 
-.yorum-bolumu , .yorum-listesi {
+.yorum-bolumu, .yorum-listesi {
     background-color: #f2f2f2;
     padding: 30px;
     border-radius: 12px;
@@ -275,7 +262,6 @@ body {
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 6px;
-
 }
 
 .form-row input:focus, .form-row textarea:focus {
@@ -308,14 +294,16 @@ body {
     margin-bottom: 12px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 }
+
 .yorum-container {
-  display: flex;
-  gap: 40px;
-  margin: 50px auto;
-  max-width: 1300px;
-  justify-content: center;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 40px;
+    margin: 50px auto;
+    max-width: 1300px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
 .main-container {
     max-width: 1100px;
     margin: 0 auto;
