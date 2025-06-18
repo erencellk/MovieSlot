@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genre, Member, Film, Actor, Rating, Review, Director, Watchlist, MovieImage, FilmMoreInfo, FilmComment
+from .models import Member, Film, Actor,  Review, Director, MovieImage, FilmMoreInfo, FilmComment,OscarAward
 
 # FilmComment için özel admin
 class FilmCommentAdmin(admin.ModelAdmin):
@@ -8,14 +8,12 @@ class FilmCommentAdmin(admin.ModelAdmin):
     search_fields = ('user_name', 'comment_text')  # arama çubuğunda aranabilir alanlar
 
 # Modelleri admin paneline kaydet
-admin.site.register(Genre)
 admin.site.register(Member)
 admin.site.register(Film)
 admin.site.register(Actor)
-admin.site.register(Rating)
 admin.site.register(Review)
 admin.site.register(Director)
-admin.site.register(Watchlist)
 admin.site.register(MovieImage)
 admin.site.register(FilmMoreInfo)
+admin.site.register(OscarAward)
 admin.site.register(FilmComment, FilmCommentAdmin)  # özel admin sınıfıyla kaydettik

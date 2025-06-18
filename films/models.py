@@ -2,27 +2,13 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
-# Genre Class Baslangıcı
-class Genre(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-
-    def __str__(self):
-        return self.name  # herhangi bir print yazısında bana class'ın içine ne yazdıysam onu döndürür.
-
-    class Meta:
-        verbose_name = 'Genre'
-        verbose_name_plural = 'Genres'
-    # Genre Class Bitiş
-
-
 # Class Actor Baslangıcı
 class Actor(models.Model):
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100)
     biography = models.TextField()
     birthday = models.DateField()
-    films = models.ManyToManyField("Film")  # ard arda oldukları ıcın bır tanesını boyle declare ettım.
+    films = models.TextField(blank=True, null=True)
     actor_picture = models.ImageField(upload_to="images/", blank=True, null=True)
 
     def __str__(self):
@@ -39,7 +25,7 @@ class Film(models.Model):
     title = models.CharField(max_length=100)  # CharField = kısa metinler için kullanılır.
     description = models.TextField()  # TextField() = uzun metinler için kullanılır.
     image = models.ImageField(upload_to="images/", null=True, blank=True)
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    genre = models.TextField(null=True, blank=True)
     duration = models.IntegerField()
     language = models.CharField(max_length=50)
     average_rating = models.FloatField()
@@ -51,6 +37,21 @@ class Film(models.Model):
         verbose_name = 'Film'
         verbose_name_plural = 'Films'
     # Film Class Bitiş
+
+
+# Class OscarAward baslangıcı
+class OscarAward(models.Model):
+    actor = models.TextField(blank=True, null=True)
+    film = models.TextField(blank=True, null=True)
+    year = models.IntegerField(validators=[MinValueValidator(1800), MaxValueValidator(2027)], blank=False, null=True)
+    category = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.actor} - {self.category} - {self.year}"
+
+    class Meta:
+        verbose_name = 'Oscar Award'
+        verbose_name_plural = 'Oscar Awards'
 
 
 # Class FilmMoreInfo baslangıcı
@@ -75,11 +76,10 @@ class FilmComment(models.Model):
     user_name = models.CharField(max_length=100)
     comment_text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    rating=models.IntegerField(null=True,blank=True ,validators=[
+    rating = models.IntegerField(null=True, blank=True, validators=[
         MinValueValidator(1),
         MaxValueValidator(5)
     ])
-
 
     def __str__(self):
         return f" Yorum : {self.user_name} - {self.comment_text}"
@@ -164,34 +164,3 @@ class MovieImage(models.Model):
         verbose_name = 'Movie Image'
         verbose_name_plural = 'Movie Images'
     # Class MovieImage Bitis
-
-
-# Class Rating Baslangıcı
-class Rating(models.Model):
-    film = models.ForeignKey(Film, on_delete=models.CASCADE)
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
-    score = models.IntegerField()  # 1-5 arası
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return str(self.score)
-
-    class Meta:
-        verbose_name = 'Rating'
-        verbose_name_plural = 'Ratings'
-    # Class Rating Bitis
-
-
-# Class WatchList Baslangıcı
-class Watchlist(models.Model):
-    film = models.ForeignKey(Film, on_delete=models.CASCADE)
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
-    added_time = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.film.title + " - " + self.member.username
-
-    class Meta:
-        verbose_name = 'Watchlist'
-        verbose_name_plural = 'Watchlists'
-    # Class WatchList Bitis
