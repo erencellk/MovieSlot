@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -74,6 +75,10 @@ class FilmComment(models.Model):
     user_name = models.CharField(max_length=100)
     comment_text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    rating=models.IntegerField(null=True,blank=True ,validators=[
+        MinValueValidator(1),
+        MaxValueValidator(5)
+    ])
 
 
     def __str__(self):
