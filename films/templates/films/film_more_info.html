@@ -57,41 +57,58 @@
 
         <hr>
         <div class="yorum-container">
-            <form method="POST" action="{% url 'film_more_info' pk=film.pk %}" class="yorum-bolumu">
+            <!-- Sol: Yorum Formu -->
+            <form id="form" method="POST" action="{% url 'film_more_info' pk=film.pk %}" class="yorum-bolumu">
                 {% csrf_token %}
                 <h3>Kullanıcı Yorumları</h3>
                 <div class="form-row">
                     <label for="kullanici_adi">Adınız:</label>
-                    <input type="text" name="kullanici_adi" id="kullanici_adi" placeholder="Adınızı Giriniz">
+                    <input type="text" name="kullanici_adi" id="kullanici_adi" placeholder="Adınızı Giriniz" required>
                 </div>
                 <div class="form-row">
                     <label for="kullanici_soyadi">Soyadınız:</label>
-                    <input type="text" name="kullanici_soyadi" id="kullanici_soyadi" placeholder="Soyadınızı Giriniz">
+                    <input type="text" name="kullanici_soyadi" id="kullanici_soyadi" placeholder="Soyadınızı Giriniz"
+                           required>
                 </div>
                 <div class="form-row">
                     <label for="yorum">Yorum:</label>
-                    <textarea name="yorum" id="yorum" rows="4" placeholder="Yorumunuzu Yazınız"></textarea>
+                    <textarea name="yorum" id="yorum" rows="4" placeholder="Yorumunuzu Yazınız" required></textarea>
                 </div>
                 <button type="submit" class="yorum-gonder-btn">Gönder</button>
+
+                <div class="rating">
+                    <span style="padding-left: 80px">Filme Oyunuz</span><br>
+                    <input type="radio" name="puan" id="star1" value="1" required><label for="star1">★1</label>
+                    <input type="radio" name="puan" id="star2" value="2" required> <label for="star2">★2</label>
+                    <input type="radio" name="puan" id="star3" value="3" required> <label for="star3">★3</label>
+                    <input type="radio" name="puan" id="star4" value="4" required> <label for="star4">★4</label>
+                    <input type="radio" name="puan" id="star5" value="5" required> <label for="star5">★5</label>
+
+
+
+
+
+                </div>
             </form>
 
+            <!-- Sağ: Yorum Listesi -->
             <div class="yorum-listesi">
                 <h3>Bu Film Hakkında Yorumlar</h3>
-            {% for yorum in comments %}
-                <div class="yorum-kart">
-                    <strong>{{ yorum.user_name}}</strong>
-                    <small style="color:gray;">{{ yorum.created_at }}</small>
-                    <p>{{ yorum.comment_text }}</p>
-                </div>
-            {% empty %}
-                <p>Henüz yorum yapılmadı.</p>
-            {% endfor %}
-
-
-
+                {% for yorum in comments %}
+                    <div class="yorum-kart">
+                        <strong>{{ yorum.user_name }}</strong>
+                        <small style="color:gray;">{{ yorum.created_at|date:"d F Y, H:i" }}</small>
+                        <p>{{ yorum.comment_text }}</p>
+                    {% if yorum.rating %}
+                        <span style="color:gold;">Filme Puanınız:{{ yorum.rating }}★</span>
+                    {% endif %}
+                    </div>
+                {% empty %}
+                    <p>Henüz yorum yapılmadı.</p>
+                {% endfor %}
             </div>
-
         </div>
+
     </div>
 </div>
 <script src="{% static 'films/eren.js' %}"></script>
