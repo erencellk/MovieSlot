@@ -5,40 +5,41 @@
     <meta charset="UTF-8">
     <title>Oyuncular</title>
     <link rel="stylesheet" href="{% static 'films/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<span class="menu-toggle" onclick="toggleMenu()">☰</span>
-<nav id="menu">
-    <a href="filmler.html">Filmler</a> <br>
-    <a href="films/static/oyuncular.html">Oyuncular</a> <br>
-    <a href="films/static/yönetmenler.html">Yönetmenler</a> <br>
-    <a href="films/static/türler.html">Türler</a> <br>
-    <a href="films/static/üyeler.html">Üyeler</a> <br>
-    <a href="films/static/izlemelistesi.html">İzleme Listesi</a> <br>
-    <a href="films/static/yorumlar.html">Yorumlar</a> <br>
-    <a href="films/static/puanlama.html">Puanlama</a> <br>
-    <a href="filmgörselleri.html">Film Görselleri</a>
-
+<nav class="liste-menu">
+    <div class="nav-left">
+        <a href="{% url 'filmler' %}"><i class="fa-solid fa-star"></i> IMDB En İyi 25 Film</a>
+        <a href="{% url 'oyuncular' %}"><i class="fa-solid fa-user"></i> Son 10 Yılın Oscar Alan
+            Oyuncuları</a>
+        <a href="yönetmenler.html"><i class="fa-solid fa-video"></i> Yönetmenler</a>
+        <a href="türler.html"><i class="fa-solid fa-tags"></i> Türler</a>
+        <a href="filmgörselleri.html"><i class="fa-solid fa-image"></i> Film Görselleri</a>
+    </div>
+    <div class="nav-right">
+        <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Giriş Yap</a>
+        <a href="/register"><i class="fa-solid fa-user-plus"></i> Kayıt Ol</a>
+    </div>
 </nav>
 
-<h2 style="text-align: center">Oyuncular</h2>
-<div id="vitrin_oyuncular">
-    {% for oyuncu in oyuncular %}
-        <div id="oyuncu-kart">
+<br><br><br>
 
+<h2 style="text-align: center">Son 10 Yılın Oscar Alan Oyuncuları</h2>
 
-            <p>{{ oyuncu.name }}</p>
-            <p>{{ oyuncu.surname }}</p>
-            <p>{{ oyuncu.biography }}</p>
-            <p>{{ oyuncu.birthday }}</p>
-            <img src="{{ oyuncu.actor_picture }}" alt="oyuncu_fotografi">
-
-        </div>
-
+<div class="oyuncular-container">
+    {% for item in actor_awards %}
+        <img src="{{ item.actor.actor_picture.url }}" alt="actor picture">
+        <h3>{{ item.actor.name }} {{ item.actor.surname }}</h3>
+        <ul>
+            {% for oscar in item.awards %}
+                <li>{{ oscar.year }} - {{ oscar.category }} ({{ oscar.film }})</li>
+            {% endfor %}
+        </ul>
     {% endfor %}
-
-
 </div>
+
 
 <script src="{% static 'films/eren.js' %}"></script>
 </body>
