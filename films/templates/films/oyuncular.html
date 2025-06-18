@@ -30,13 +30,16 @@
 
 <div class="oyuncular-container">
     {% for item in actor_awards %}
-        <img src="{{ item.actor.actor_picture.url }}" alt="actor picture">
-        <h3>{{ item.actor.name }} {{ item.actor.surname }}</h3>
-        <ul>
-            {% for oscar in item.awards %}
-                <li>{{ oscar.year }} - {{ oscar.category }} ({{ oscar.film }})</li>
-            {% endfor %}
-        </ul>
+        <div class="oyuncu-kart">
+            <img src="{{ item.actor.actor_picture.url }}" alt="actor picture" class="oyuncu-resim">
+            <h3>{{ item.actor.name }} {{ item.actor.surname }}</h3>
+            <div class="oyuncu-oduller"></div>
+            <ul>
+                {% for oscar in item.awards %}
+                    <li>{{ oscar.year }} - {{ oscar.category }} <br><em>({{ oscar.film }})</em></li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endfor %}
 </div>
 

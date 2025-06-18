@@ -337,3 +337,49 @@ body {
 }
 
 
+.oyuncular-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 40px;
+    background-color: #eaeaea;
+}
+
+.oyuncu-kart {
+    width: 220px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.oyuncu-kart:hover {
+    transform: translateY(-5px);
+}
+
+.oyuncu-resim {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.oyuncu-isim {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.oyuncu-oduller ul li {
+    padding: 0;
+    margin: 10px 0 0;
+    list-style: none;
+    font-size: 15px;
+    text-align: left;
+    font-weight:bold;
+}
