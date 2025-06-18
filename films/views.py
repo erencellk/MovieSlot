@@ -3,9 +3,14 @@ from http.client import HTTPResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from django.contrib.auth.hashers import make_password
+from django.template.context_processors import request
+
 from .models import Member, Actor
 from .models import Film, FilmMoreInfo, FilmComment
 from django.http import HttpResponse
+
+
+
 
 
 def create_member(info):
@@ -57,10 +62,11 @@ def film_more_info(request, pk):
         ad = request.POST.get('kullanici_adi')
         soyad = request.POST.get('kullanici_soyadi')
         yorum = request.POST.get('yorum')
+        puan = request.POST.get('puan')
 
-        if ad and soyad and yorum:
+        if ad and soyad and yorum and puan:
             tam_ad = ad + " " + soyad
-            FilmComment.objects.create(film=film, user_name=tam_ad, comment_text=yorum)
+            FilmComment.objects.create(film=film, user_name=tam_ad, comment_text=yorum ,rating=int(puan))
             return redirect('film_more_info', pk=pk)
 
     return render(request, 'films/film_more_info.html', {
