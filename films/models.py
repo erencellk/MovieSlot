@@ -6,9 +6,6 @@ from django.db import models
 class Actor(models.Model):
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100)
-    biography = models.TextField()
-    birthday = models.DateField()
-    films = models.TextField(blank=True, null=True)
     actor_picture = models.ImageField(upload_to="images/", blank=True, null=True)
 
     def __str__(self):
@@ -44,10 +41,10 @@ class OscarAward(models.Model):
     actor = models.TextField(blank=True, null=True)
     film = models.TextField(blank=True, null=True)
     year = models.IntegerField(validators=[MinValueValidator(1800), MaxValueValidator(2027)], blank=False, null=True)
-    category = models.CharField(max_length=100)
+
 
     def __str__(self):
-        return f"{self.actor} - {self.category} - {self.year}"
+        return f"{self.actor} - {self.year}"
 
     class Meta:
         verbose_name = 'Oscar Award'
@@ -90,6 +87,7 @@ class FilmComment(models.Model):
 
 
 # Class FilmComment bitis
+
 
 # Director Class Baslangıcı
 class Director(models.Model):
@@ -164,3 +162,15 @@ class MovieImage(models.Model):
         verbose_name = 'Movie Image'
         verbose_name_plural = 'Movie Images'
     # Class MovieImage Bitis
+
+class Login(models.Model):
+    password = models.CharField(max_length=128)
+    email = models.EmailField()
+
+
+    def __str__(self):
+        return str(self.email)
+
+    class Meta:
+        verbose_name = 'Login'
+        verbose_name_plural = 'Logins'
