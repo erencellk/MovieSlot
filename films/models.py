@@ -174,3 +174,15 @@ class Login(models.Model):
     class Meta:
         verbose_name = 'Login'
         verbose_name_plural = 'Logins'
+
+class Register(models.Model):
+    ad = models.CharField(max_length=100)
+    soyad = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return f"{self.ad} {self.soyad}"
+
+    class Meta:
+        verbose_name = 'Register'
+        verbose_name_plural = 'Registers'
