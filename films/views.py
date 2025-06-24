@@ -1,6 +1,7 @@
-# views.py (eşleşme zorunluluğu kaldırıldı)
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.hashers import make_password
+from django.contrib import messages
 from .models import Member, Actor, Film, FilmMoreInfo, FilmComment, OscarAward
 
 
@@ -87,7 +88,7 @@ def oscar_winners(request):
 def login(request):
     if request.method == "POST":
         email = request.POST['email']
-        password = request.POST['password']
+        password = request.POST.get('password')
 
 
 
@@ -97,3 +98,24 @@ def login(request):
         })
 
     return render(request , 'films/giris.html')
+
+
+from django.shortcuts import render, redirect
+from .models import Register
+from django.contrib import messages
+
+def register_view(request):
+    if request.method == "POST":
+        ad = request.POST.get('ad')
+        soyad = request.POST.get('soyad')
+        email = request.POST.get('email')
+
+        # basit doğrulama örneği
+        if ad and soyad and email:
+            Register.objects.create(ad=ad, soyad=soyad, email=email)
+            messages.success(request, "Kaydınız başarıyla oluşturuldu ✅")
+            return redirect('register')
+        else:
+            messages.error(request, "Lütfen tüm alanları doldurun ❌")
+
+    return render(request, 'films/kayıtol.html')
