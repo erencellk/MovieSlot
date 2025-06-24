@@ -8,4 +8,6 @@ urlpatterns = [
     path('actor/info/<int:pk>/', views.actor_detail, name='actor_detail'),
     path('oyuncular.html/', views.oscar_winners, name='oyuncular'),
     path('login/', views.login, name='login'),
+
+    path('register/',views.register_view ,  name='register'),
 ]
