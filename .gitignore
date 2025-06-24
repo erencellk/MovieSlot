@@ -4,6 +4,6 @@ __pycache__/
 *.log
 db.sqlite3
 .env
-media/
+films/static/films/media/
 venv/
 .idea
