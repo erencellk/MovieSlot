@@ -34,9 +34,9 @@
             <img src="{{ item.actor.actor_picture.url }}" alt="actor picture" class="oyuncu-resim">
             <h3>{{ item.actor.name }} {{ item.actor.surname }}</h3>
             <div class="oyuncu-oduller"></div>
-            <ul>
+            <ul class="oyuncu-kart-listesi">
                 {% for oscar in item.awards %}
-                    <li>{{ oscar.year }} - {{ oscar.category }} <br><em>({{ oscar.film }})</em></li>
+                    <li>{{ oscar.film }} <br><em>({{ oscar.year }})</em></li>
                 {% endfor %}
             </ul>
         </div>
