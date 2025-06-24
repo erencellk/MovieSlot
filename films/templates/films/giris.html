@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş Sayfası</title>
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+    <style>
+        body {
+            background-color: #f4c491;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="login-container">
+        <h2>👋 Merhaba, Hoşgeldiniz!</h2>
+
+        <input type="email" name="email" placeholder="Email adresinizi giriniz" required>
+        <input type="password" name="password" placeholder="Şifreniz" required>
+
+        <div class="checkbox-remember">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Beni Hatırla</label>
+        </div>
+
+        <button type="submit">Giriş Yap</button>
+
+        <div class="alt-linkler">
+            <a style="text-decoration: none" href="/sifremi-unuttum">Şifremi unuttum</a>
+            <p>Hesabınız yok mu? <a style="text-decoration: none" href="/register">Kayıt Ol</a></p>
+        </div>
+    </div>
+</form>
+
+
+<script src="{% static 'films/eren.js' %}"></script>
+</body>
+</html>
