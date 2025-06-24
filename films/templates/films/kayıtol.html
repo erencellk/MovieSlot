@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 128, 0, 0.5), rgba(0, 128, 0, 0.5)),
+            url("{% static 'films/media/dan-cristian-padure-hguxpsaUpBk-unsplash.jpg' %}") no-repeat center center fixed;
+            backdrop-filter: blur(1px);
+            background-size: cover;
+            backdrop-filter:;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li style="color: white;">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form method="POST" action="{% url 'register' %}">
+
+    {% csrf_token %}
+    <div class="register-container">
+        <h2>👋 Kayıt Ekranına Hoşgeldiniz!</h2>
+
+        <div class="form-group">
+            <label for="ad">Adınız:</label>
+            <input type="text" name="ad" id="ad" required>
+        </div>
+
+        <div class="form-group">
+            <label for="soyad">Soyadınız:</label>
+            <input type="text" name="soyad" id="soyad" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Emailiniz:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+
+        <button type="submit">Kayıt Ol</button>
+    </div>
+</form>
+
+
+</body>
+</html>

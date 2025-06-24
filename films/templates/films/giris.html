@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <title>Giriş Sayfası</title>
     <link rel="stylesheet" href="{% static 'films/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
     <style>
         body {
-            background-color: #f4c491;
+            background: linear-gradient(rgba(0, 128, 0, 0.5), rgba(0, 128, 0, 0.5)),
+            url("{% static 'films/media/dan-cristian-padure-hguxpsaUpBk-unsplash.jpg' %}") no-repeat center center fixed;
+            backdrop-filter: blur(1px);
+            background-size: cover;
+            backdrop-filter:;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
         }
     </style>
 </head>
 <body>
 
-<form method="POST" action="{% url 'login' %}">
+<form style method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     <div class="login-container">
         <h2>👋 Merhaba, Hoşgeldiniz!</h2>
@@ -35,8 +41,11 @@
         <button type="submit">Giriş Yap</button>
 
         <div class="alt-linkler">
-            <a style="text-decoration: none" href="/sifremi-unuttum">Şifremi unuttum</a>
-            <p>Hesabınız yok mu? <a style="text-decoration: none" href="/register">Kayıt Ol</a></p>
+            <a style="text-decoration: none;font-size: 15px" href="/sifremi-unuttum"><strong>Şifremi
+                unuttum</strong></a>
+
+            <p style="font-size: 15px;">Hesabınız yok mu? <a style="text-decoration: none" href="/register"><strong
+                    style="font-size: 15px"><br>Kayıt Ol</strong></a></p>
         </div>
     </div>
 </form>
