@@ -83,3 +83,17 @@ def oscar_winners(request):
     return render(request, 'films/oyuncular.html', {
         'actor_awards': actor_awards
     })
+
+def login(request):
+    if request.method == "POST":
+        email = request.POST['email']
+        password = request.POST['password']
+
+
+
+        return render(request , 'films/giris.html' , context={
+            'password': password,
+            'email':email,
+        })
+
+    return render(request , 'films/giris.html')
