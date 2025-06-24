@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Member, Film, Actor,  Review, Director, MovieImage, FilmMoreInfo, FilmComment,OscarAward
+from .models import Member, Film, Actor,  Review, Director, MovieImage, FilmMoreInfo, FilmComment,OscarAward , Login
 
 # FilmComment için özel admin
 class FilmCommentAdmin(admin.ModelAdmin):
@@ -16,4 +16,5 @@ admin.site.register(Director)
 admin.site.register(MovieImage)
 admin.site.register(FilmMoreInfo)
 admin.site.register(OscarAward)
+admin.site.register(Login)
 admin.site.register(FilmComment, FilmCommentAdmin)  # özel admin sınıfıyla kaydettik
