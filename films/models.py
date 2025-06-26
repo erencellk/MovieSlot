@@ -179,6 +179,7 @@ class Register(models.Model):
     ad = models.CharField(max_length=100)
     soyad = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
+    sifre = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.ad} {self.soyad}"
