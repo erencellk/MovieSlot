@@ -1,3 +1,4 @@
+{% extends 'films/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -16,24 +17,10 @@
 <body>
 
 
-<nav class="liste-menu">
-    <div class="nav-left">
-        <a href="{% url 'filmler' %}"><i class="fa-solid fa-star"></i> IMDB En İyi 25 Film</a>
-        <a href="http://localhost:8000/oyuncular.html/"><i class="fa-solid fa-user"></i> Son 10 Yılın Oscar Alan Oyuncuları</a>
-        <a href="yönetmenler.html"><i class="fa-solid fa-video"></i> Yönetmenler</a>
-        <a href="türler.html"><i class="fa-solid fa-tags"></i> Türler</a>
-        <a href="yorumlar.html"><i class="fa-solid fa-comment-dots"></i> Yorumlar</a>
-        <a href="puanlama.html"><i class="fa-solid fa-star-half-stroke"></i> Puanlama</a>
-        <a href="filmgörselleri.html"><i class="fa-solid fa-image"></i> Film Görselleri</a>
-    </div>
-    <div class="nav-right">
-        <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Giriş Yap</a>
-        <a href="/register"><i class="fa-solid fa-user-plus"></i> Kayıt Ol</a>
-    </div>
-</nav>
 
-<br><br><br>
-
+<main class="main-content"></main>
+{% block content %}
+    <br><br><br>
 <h2 id="baslik-imdb">🎬 IMDB En İyi 25 Film</h2>
 <div class="vitrin">
     {% for film in encokizlenenfilmler %}
@@ -49,8 +36,9 @@
         </div>
     {% endfor %}
 </div>
-
-
+{% endblock %}
+</main>
 <script src="{% static 'films/eren.js' %}"></script>
+
 </body>
 </html>
