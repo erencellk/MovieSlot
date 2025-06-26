@@ -10,4 +10,15 @@ urlpatterns = [
     path('login/', views.login, name='login'),
 
     path('register/',views.register_view ,  name='register'),
+
+    path('uyeler/',views.uyeler , name='uyeler'),
+
+    path('yorumlar/' , views.yorumlar , name='yorumlar'),
+
+    path('puanlama/' , views.puanlama, name='puanlama'),
+
+    path('filmgorselleri/' ,views.film_gorselleri , name='film_gorselleri'),
+
+    path('logout/' , views.logout_views , name='logout'),
+
 ]
