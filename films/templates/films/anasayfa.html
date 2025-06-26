@@ -3,8 +3,23 @@
 {% block title %}Ana Sayfa{% endblock %}
 
 {% block content %}
-<div class="anasayfa-icerik">
-    <h1>🎬 MovieSlot'a Hoş Geldiniz!</h1>
-    <p>Burada en iyi filmleri, oyuncuları ve yorumları keşfedebilirsiniz.</p>
-</div>
+    <div class="anasayfa-icerik">
+        <h1>🎬 MovieSlot'a Hoş Geldiniz!</h1>
+        <p>Burada en iyi filmleri, oyuncuları ve yorumları keşfedebilirsiniz.</p>
+    </div>
+
+
+
+    {% if film %}
+    <section class="film-oneri">
+        <h2>🎬 Bugünün Film Önerisi</h2>
+        <h3>{{ film.isim }}</h3>
+        <div class="video-container">
+            <iframe width="560" height="315" src="{{ film.youtube_url }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+{% else %}
+    <p>Henüz önerilecek film bulunamadı.</p>
+{% endif %}
+
 {% endblock %}
