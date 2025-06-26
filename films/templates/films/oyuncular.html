@@ -1,3 +1,4 @@
+{% extends 'films/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,9 @@
 </nav>
 
 <br><br><br>
-
+<main class="main-content"></main>
+{% block content %}
+    <br><br><br><br>
 <h2 style="text-align: center">Son 10 Yılın Oscar Alan Oyuncuları</h2>
 
 <div class="oyuncular-container">
@@ -45,5 +48,7 @@
 
 
 <script src="{% static 'films/eren.js' %}"></script>
+{% endblock %}
+</main>
 </body>
 </html>
