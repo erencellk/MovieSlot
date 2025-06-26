@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ana Sayfa{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="liste-menu">
+    <div class="nav-left">
+        <a href="{% url 'filmler' %}"><i class="fa-solid fa-star"></i> IMDB En İyi 25 Film</a>
+        <a href="{% url 'oyuncular' %}"><i class="fa-solid fa-user"></i> Son 10 Yılın Oscar Alan Oyuncuları</a>
+        <a href="{% url 'uyeler' %}"><i class="fa-solid fa-users"></i> Üyeler</a>
+        <a href="{% url 'yorumlar' %}"><i class="fa-solid fa-comment-dots"></i> Yorumlar</a>
+        <a href="{% url 'puanlama' %}"><i class="fa-solid fa-star-half-stroke"></i> Puanlama</a>
+        <a href="{% url 'film_gorselleri' %}"><i class="fa-solid fa-image"></i> Film Görselleri</a>
+    </div>
+
+    <div class="header-right">
+    {% if kullanici %}
+        <span class="welcome-msg">👋 Hoşgeldiniz, {{ kullanici.ad }}!</span>
+        <a href="{% url 'logout' %}" class="auth-link">Çıkış Yap</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="auth-link">
+            <i class="fa-solid fa-right-to-bracket"></i> Giriş Yap
+        </a>
+        <a href="{% url 'register' %}" class="auth-link">
+            <i class="fa-solid fa-user-plus"></i> Kayıt Ol
+        </a>
+    {% endif %}
+</div>
+
+</nav>
+
+<!-- Sayfa İçeriği -->
+<main class="main-content">
+    {% block content %}{% endblock %}
+</main>
+
+<script src="{% static 'films/eren.js' %}"></script>
+</body>
+</html>
