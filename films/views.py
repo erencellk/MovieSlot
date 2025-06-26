@@ -1,8 +1,10 @@
-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
-from .models import Member, Actor, Film, FilmMoreInfo, FilmComment, OscarAward
+from .models import Member, Actor, Film, FilmMoreInfo, FilmComment, OscarAward, Login
+from django.shortcuts import render, redirect
+from .models import Register
+from django.contrib import messages
 
 
 def create_member(info):
@@ -23,8 +25,7 @@ def create_member(info):
         member.save()
 
 
-def home(request):
-    return render(request, 'films/anasayfa.html')
+
 
 
 def filmler_view(request):
@@ -85,37 +86,73 @@ def oscar_winners(request):
         'actor_awards': actor_awards
     })
 
+
 def login(request):
     if request.method == "POST":
-        email = request.POST['email']
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
+        # Register modelinde bu kullanıcı var mı kontrol et
+        if Register.objects.filter(email=email, sifre=password).exists():
+            kullanici = Register.objects.get(email=email)
 
+            request.session['kullanici_id'] = kullanici.id
+            messages.success(request, f'Hoş Geldin {kullanici.ad}!')
+            return redirect('home')  # home.html'e yönlendir
+        else:
+            messages.error(request, 'Email veya şifre hatalı!')
+            return redirect('login')
 
-        return render(request , 'films/giris.html' , context={
-            'password': password,
-            'email':email,
-        })
-
-    return render(request , 'films/giris.html')
-
-
-from django.shortcuts import render, redirect
-from .models import Register
-from django.contrib import messages
+    return render(request, 'films/giris.html')
 
 def register_view(request):
     if request.method == "POST":
         ad = request.POST.get('ad')
         soyad = request.POST.get('soyad')
         email = request.POST.get('email')
+        sifre = request.POST.get('sifre')
 
-        # basit doğrulama örneği
+        if Register.objects.filter(email=email).exists():
+            messages.error(request, "Bu email zaten kayıtlı ❌")
+            return redirect('register')
+
         if ad and soyad and email:
-            Register.objects.create(ad=ad, soyad=soyad, email=email)
+            Register.objects.create(ad=ad, soyad=soyad, email=email,sifre=sifre)
             messages.success(request, "Kaydınız başarıyla oluşturuldu ✅")
             return redirect('register')
         else:
             messages.error(request, "Lütfen tüm alanları doldurun ❌")
 
     return render(request, 'films/kayıtol.html')
+
+
+def home(request):
+    kullanici = None
+    if 'kullanici_id' in request.session:
+        from .models import Register
+        try:
+            kullanici = Register.objects.get(id=request.session['kullanici_id'])
+        except Register.DoesNotExist:
+            pass
+    return render(request, 'films/anasayfa.html', {
+        'kullanici': kullanici
+    })
+
+
+
+def yorumlar(request):
+    return render(request, 'films/yorumlar.html')
+
+def puanlama(request):
+    return render(request, 'films/puanlama.html')
+
+def film_gorselleri(request):
+    return render(request , 'films/filmgörselleri.html')
+
+def logout_views(request):
+    request.session.flush()
+    messages.success(request, 'Başarıyla çıkış yaptınız!')
+    return redirect('home')
+
+def uyeler(request):
+    return render(request , 'films/üyeler.html')
