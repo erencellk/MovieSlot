@@ -1,39 +1,10 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'films/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+{% extends "films/base.html" %}
 
-    <title>AnaSayfa</title>
-</head>
-<body>
+{% block title %}Ana Sayfa{% endblock %}
 
-
-<nav class="liste-menu">
-    <div class="nav-left">
-        <a href="filmler.html"><i class="fa-solid fa-star"></i> IMDB En İyi 25 Film</a>
-        <a href="http://localhost:8000/oyuncular.html/"><i class="fa-solid fa-user"></i> Oyuncular</a>
-        <a href="yönetmenler.html"><i class="fa-solid fa-video"></i> Yönetmenler</a>
-        <a href="türler.html"><i class="fa-solid fa-tags"></i> Türler</a>
-        <a href="üyeler.html"><i class="fa-solid fa-users"></i> Üyeler</a>
-        <a href="izlemelistesi.html"><i class="fa-solid fa-list"></i> İzleme Listesi</a>
-        <a href="yorumlar.html"><i class="fa-solid fa-comment-dots"></i> Yorumlar</a>
-        <a href="puanlama.html"><i class="fa-solid fa-star-half-stroke"></i> Puanlama</a>
-        <a href="filmgörselleri.html"><i class="fa-solid fa-image"></i> Film Görselleri</a>
-    </div>
-    <div class="nav-right">
-        <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Giriş Yap</a>
-        <a href="/register"><i class="fa-solid fa-user-plus"></i> Kayıt Ol</a>
-    </div>
-</nav>
-<br><br><br>
-<h3 style="text-align:center;margin-top: 20px">ANASAYFAYA HOSGELDİNİZ! (yapım asamasında...)</h3>
-<script src="{% static 'films/eren.js' %}"></script>
-</body>
-</html>
+{% block content %}
+<div class="anasayfa-icerik">
+    <h1>🎬 MovieSlot'a Hoş Geldiniz!</h1>
+    <p>Burada en iyi filmleri, oyuncuları ve yorumları keşfedebilirsiniz.</p>
+</div>
+{% endblock %}
