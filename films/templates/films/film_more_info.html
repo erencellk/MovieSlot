@@ -1,3 +1,4 @@
+{% extends 'films/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -11,22 +12,8 @@
 </head>
 <body>
 <div class="main-container">
-    <nav class="liste-menu">
-        <div class="nav-left">
-            <a href="http://127.0.0.1:8000/filmler.html/"><i class="fa-solid fa-star"></i> IMDB En İyi 25 Film</a>
-            <a href="http://localhost:8000/oyuncular.html/"><i class="fa-solid fa-user"></i> Son 10 Yılın Oscar Alan Oyuncuları</a>
-            <a href="yönetmenler.html"><i class="fa-solid fa-video"></i> Yönetmenler</a>
-            <a href="türler.html"><i class="fa-solid fa-tags"></i> Türler</a>
-            <a href="üyeler.html"><i class="fa-solid fa-users"></i> Üyeler</a>
-            <a href="filmgörselleri.html"><i class="fa-solid fa-image"></i> Film Görselleri</a>
-        </div>
-        <div class="nav-right">
-            <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Giriş Yap</a>
-            <a href="/register"><i class="fa-solid fa-user-plus"></i> Kayıt Ol</a>
-        </div>
-    </nav>
 
-
+    {% block content %}
     <div class="film-detay-kart">
 
         <div class="film-bilgi-kart" style="flex: 1;"> <!-- 1 alan kapla -->
@@ -106,8 +93,11 @@
             </div>
         </div>
 
+
     </div>
+    {% endblock %}
 </div>
+
 <script src="{% static 'films/eren.js' %}"></script>
 </body>
 </html>
