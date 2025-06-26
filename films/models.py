@@ -187,3 +187,14 @@ class Register(models.Model):
     class Meta:
         verbose_name = 'Register'
         verbose_name_plural = 'Registers'
+
+class oneCıkanFilmler(models.Model):
+    isim = models.TextField(max_length=100)
+    youtube_url = models.URLField()
+
+    def __str__(self):
+        return self.isim
+
+    class Meta:
+        verbose_name='OneCıkanFilm'
+        verbose_name_plural ='OneCıkanFilmler'

@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
-from .models import Member, Actor, Film, FilmMoreInfo, FilmComment, OscarAward, Login
+from .models import Member, Actor, Film, FilmMoreInfo, FilmComment, OscarAward, Login,oneCıkanFilmler
 from django.shortcuts import render, redirect
 from .models import Register
 from django.contrib import messages
+import random
 
 
 def create_member(info):
@@ -126,17 +127,7 @@ def register_view(request):
     return render(request, 'films/kayıtol.html')
 
 
-def home(request):
-    kullanici = None
-    if 'kullanici_id' in request.session:
-        from .models import Register
-        try:
-            kullanici = Register.objects.get(id=request.session['kullanici_id'])
-        except Register.DoesNotExist:
-            pass
-    return render(request, 'films/anasayfa.html', {
-        'kullanici': kullanici
-    })
+
 
 
 
@@ -156,3 +147,28 @@ def logout_views(request):
 
 def uyeler(request):
     return render(request , 'films/üyeler.html')
+
+
+def onecıkanfilmler(request):
+    film_listesi = oneCıkanFilmler.objects.all()
+    rastgele_film=random.choice(film_listesi) if film_listesi else None
+
+    return render(request,'films/anasayfa.html',{
+        'rastgele_film': rastgele_film
+    })
+
+
+def home(request):
+    kullanici = None
+    if 'kullanici_id' in request.session:
+        from .models import Register
+        try:
+            kullanici = Register.objects.get(id=request.session['kullanici_id'])
+        except Register.DoesNotExist:
+            pass
+
+    film = oneCıkanFilmler.objects.order_by('?').first()
+    return render(request, 'films/anasayfa.html', {
+        'kullanici': kullanici,
+        'film': film
+    })
