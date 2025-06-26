@@ -538,3 +538,8 @@ body {
 .alt-linkler a:hover {
     color: #fff;
 }
+.film-oneri{
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+}
