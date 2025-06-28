@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Member, Actor, Film, FilmMoreInfo, FilmComment, OscarAward, Login,oneCıkanFilmler
 from django.shortcuts import render, redirect
 from .models import Register
+from django.http import JsonResponse
 from django.contrib import messages
 import random
 
@@ -172,3 +173,13 @@ def home(request):
         'kullanici': kullanici,
         'film': film
     })
+
+
+def rastgele_film(request):
+    film = oneCıkanFilmler.objects.order_by('?').first()
+    return JsonResponse(
+        {
+            'isim': film.isim,
+            'youtube_url':film.youtube_url
+
+         })
