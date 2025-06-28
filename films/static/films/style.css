@@ -562,3 +562,11 @@ body {
   background-color: #657e97;
   transform: scale(1.03);
 }
+.welcome-msg{
+    background-color: #222;
+    color:#fff;
+    padding: 6px 12px;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+}
