@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('logout/' , views.logout_views , name='logout'),
 
+    path('rastgele-film/', views.rastgele_film, name='rastgele_film')
+
 
 
 ]
