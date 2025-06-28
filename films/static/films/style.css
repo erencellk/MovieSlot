@@ -87,11 +87,13 @@ body a {
 
 
 }
+
 .header-right a {
     background-color: rgba(255, 255, 255, 0.15);
     transform: scale(1.05);
 
 }
+
 .nav-left a {
     display: flex;
     align-items: center;
@@ -538,8 +540,25 @@ body {
 .alt-linkler a:hover {
     color: #fff;
 }
-.film-oneri{
+
+.film-oneri {
     align-items: center;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 60px;
+}
+
+#film-oner-buton {
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color: transparent;
+    width: 180px;
+    height: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#film-oner-buton:hover {
+  background-color: #657e97;
+  transform: scale(1.03);
 }
