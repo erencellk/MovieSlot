@@ -99,7 +99,7 @@ def login(request):
             kullanici = Register.objects.get(email=email)
 
             request.session['kullanici_id'] = kullanici.id
-            messages.success(request, f'Hoş Geldin {kullanici.ad}!')
+            messages.success(request, f'👋 {kullanici.ad}!')
             return redirect('home')  # home.html'e yönlendir
         else:
             messages.error(request, 'Email veya şifre hatalı!')
