@@ -1,25 +1,47 @@
 {% extends "films/base.html" %}
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+</head>
+<body>
 {% block title %}Ana Sayfa{% endblock %}
-
-{% block content %}
-    <div class="anasayfa-icerik">
-        <h1>🎬 MovieSlot'a Hoş Geldiniz!</h1>
-        <p>Burada en iyi filmleri, oyuncuları ve yorumları keşfedebilirsiniz.</p>
-    </div>
-
-
-
-    {% if film %}
-    <section class="film-oneri">
-        <h2>🎬 Bugünün Film Önerisi</h2>
-        <h3>{{ film.isim }}</h3>
-        <div class="video-container">
-            <iframe width="560" height="315" src="{{ film.youtube_url }}" frameborder="0" allowfullscreen></iframe>
+<main class="main-content">
+    {% block content %}
+        <div class="anasayfa-icerik">
+            <h1 style="text-align: center">🎬 MovieSlot'a Hoş Geldiniz!</h1>
+            <p style="text-align: center">Burada en iyi filmleri, oyuncuları ve yorumları keşfedebilirsiniz.</p>
         </div>
-    </section>
-{% else %}
-    <p>Henüz önerilecek film bulunamadı.</p>
-{% endif %}
 
-{% endblock %}
+
+
+        {% if film %}
+            <section class="film-oneri">
+                <button id="film-oner-buton" type="button"><i class="fas fa-random"></i> Rastgele Film Öner!</button>
+                <h2>🎬 Bugünün Film Önerisi</h2>
+                <h3>{{ film.isim }}</h3>
+                <div class="video-container">
+                    <iframe style="border-radius: 12px;" width="700" height="400" src="{{ film.youtube_url }}"
+                            frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
+            </section>
+        {% else %}
+            <p>Henüz önerilecek film bulunamadı.</p>
+        {% endif %}
+
+    {% endblock %}
+</main>
+
+{% static 'films/eren.js' %}
+</body>
+</html>
+
+
