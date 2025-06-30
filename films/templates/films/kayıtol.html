@@ -6,6 +6,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'films/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 
     <style>
@@ -28,11 +30,11 @@
 
 
 {% if messages %}
-  <ul>
-    {% for message in messages %}
-      <li style="color: white;">{{ message }}</li>
-    {% endfor %}
-  </ul>
+    <ul>
+        {% for message in messages %}
+            <li style="color: white;">{{ message }}</li>
+        {% endfor %}
+    </ul>
 {% endif %}
 
 <form method="POST" action="{% url 'register' %}">
@@ -57,13 +59,31 @@
         </div>
         <div class="form-group">
             <label for="sifre">Şifreniz:</label>
-            <input type="sifre" name="sifre" id="sifre" required>
+            <div style="position: relative">
+                <input type="password" name="sifre" id="sifre" required>
+                <i id="togglePassword" class="fa-solid fa-eye"
+                   style="position:absolute; right:-2px; top:50%; transform:translateY(-50%); cursor:pointer;"></i>
+            </div>
+
         </div>
 
         <button type="submit">Kayıt Ol</button>
     </div>
 </form>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("togglePassword");
+  const password = document.getElementById("sifre");
 
+  if (toggle && password) {
+    toggle.addEventListener("click", function () {
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+      this.classList.toggle("fa-eye-slash");
+    });
+  }
+});
+</script>
 </body>
 </html>
