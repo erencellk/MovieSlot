@@ -4,10 +4,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FilmMoreInfo</title>
+    {% block title %}FilmDetayları{% endblock %}
     <link rel="stylesheet" href="{% static 'films/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN -->
+    {% block favicon %}
+        <link rel="icon" type="image/png" href="{% static 'films/media/film_detaylari.png' %}">
+    {% endblock %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>

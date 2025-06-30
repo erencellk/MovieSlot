@@ -8,11 +8,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    {% block title %}AnaSayfa{% endblock %}
+    {% block favicon %}
+        <link rel="icon" type="image/png" href="{% static 'films/media/favicon_anasayfa.png' %}">
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'films/style.css' %}">
 </head>
 <body>
-{% block title %}Ana Sayfa{% endblock %}
+
 <main class="main-content">
     {% block content %}
         <div class="anasayfa-icerik">

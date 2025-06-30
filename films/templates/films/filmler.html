@@ -4,14 +4,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MovieSlot</title>
-    <link rel="icon" type="image/png" href="/films/media/favicon.png">
+    {% block title %}IMDB En İyi 25 Film{% endblock %}
+    {% block favicon %}
+        <link rel="icon" type="image/png" href="{% static 'films/media/imdbeniyi25film.png' %}">
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'films/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- font kullanımı import-->
+
+
 
 </head>
 <body>
