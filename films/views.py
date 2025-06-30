@@ -1,3 +1,5 @@
+from doctest import script_from_examples
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
@@ -44,6 +46,7 @@ def film_more_info(request, pk):
     comments = FilmComment.objects.filter(film=film).order_by('-created_at')
 
     if request.method == "POST":
+
         ad = request.POST.get('kullanici_adi')
         soyad = request.POST.get('kullanici_soyadi')
         yorum = request.POST.get('yorum')
@@ -54,10 +57,12 @@ def film_more_info(request, pk):
             FilmComment.objects.create(film=film, user_name=tam_ad, comment_text=yorum, rating=int(puan))
             return redirect('film_more_info', pk=pk)
 
+
     return render(request, 'films/film_more_info.html', {
         'film': film,
         'more_info': more_info,
         'comments': comments,
+
     })
 
 
@@ -93,12 +98,17 @@ def login(request):
     if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
+        remember = request.POST.get('remember')
 
         # Register modelinde bu kullanıcı var mı kontrol et
         if Register.objects.filter(email=email, sifre=password).exists():
             kullanici = Register.objects.get(email=email)
 
             request.session['kullanici_id'] = kullanici.id
+            if not remember:
+                request.session.set_expiry(0)
+            else:
+                request.session.set_expiry(60 * 60 * 24 * 7)
             messages.success(request, f'👋 {kullanici.ad}!')
             return redirect('home')  # home.html'e yönlendir
         else:
