@@ -379,7 +379,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    justify-content: left;
+    justify-content: center;
     padding: 40px;
     background-color: transparent;
 }
@@ -546,6 +546,7 @@ body {
     text-align: center;
     margin-top: 60px;
 }
+
 
 #film-oner-buton {
     border-radius: 15px;
