@@ -3,7 +3,7 @@ from doctest import script_from_examples
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
-from .models import Member, Actor, Film, FilmMoreInfo, FilmComment, OscarAward, Login,oneCıkanFilmler
+from .models import Members, Actor, Film, FilmMoreInfo, FilmComment, OscarAward, Login,oneCıkanFilmler
 from django.shortcuts import render, redirect
 from .models import Register
 from django.http import JsonResponse
@@ -20,7 +20,7 @@ def create_member(info):
 
         hashed_password = make_password(password)
 
-        member = Member.objects.create(
+        member = Members.objects.create(
             username=username,
             usersurname=usersurname,
             email=email,
@@ -186,10 +186,25 @@ def home(request):
 
 
 def rastgele_film(request):
-    film = oneCıkanFilmler.objects.order_by('?').first()
+
+    film_ids = oneCıkanFilmler.objects.values_list('id', flat=True)
+
+
+    random_id = random.choice(film_ids)
+
+
+    film = oneCıkanFilmler.objects.get(id=random_id)
+
+
     return JsonResponse(
         {
             'isim': film.isim,
-            'youtube_url':film.youtube_url
+            'youtube_url': film.youtube_url
+        })
 
-         })
+
+def profil_listesi(request):
+    uyeler = Members.objects.all()
+    return render(request,'films/üyeler.html',{
+        'uyeler': uyeler
+    })

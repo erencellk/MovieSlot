@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
+
 # Class Actor Baslangıcı
 class Actor(models.Model):
     name = models.CharField(max_length=100)
@@ -41,7 +42,6 @@ class OscarAward(models.Model):
     actor = models.TextField(blank=True, null=True)
     film = models.TextField(blank=True, null=True)
     year = models.IntegerField(validators=[MinValueValidator(1800), MaxValueValidator(2027)], blank=False, null=True)
-
 
     def __str__(self):
         return f"{self.actor} - {self.year}"
@@ -107,30 +107,11 @@ class Director(models.Model):
 
 # User Member Baslangıcı
 
-class Member(models.Model):
-    username = models.CharField(max_length=50)
-    usersurname = models.CharField(max_length=50)
-    email = models.EmailField()
-    password = models.CharField(max_length=128)  # hashed parolayı burada tutacagım
-    first_name = models.CharField(max_length=80)
-    last_name = models.CharField(max_length=80)
-    profile_pic = models.ImageField(upload_to="images/", null=True, blank=True)
-    active = models.BooleanField(default=True)
-
-    def __str__(self):
-        return (self.username + " - " + self.usersurname + " - " +
-                self.email + " - " + self.password)  # kayıt olan tüm bilgiler dönsün istiyorum.
-
-    class Meta:
-        verbose_name = 'Member'
-        verbose_name_plural = 'Members'
-    # Class Member Bitis
-
 
 # Review Class Baslangıcı
 class Review(models.Model):
     film = models.ForeignKey(Film, on_delete=models.CASCADE)
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    member = models.ForeignKey('Members', on_delete=models.CASCADE)
     text = models.TextField()
     rating = models.IntegerField()  # 1-5 arası puanlama
     created_at = models.DateTimeField(auto_now_add=True)  # ilk kayıtta zamanı bir kere yazdırdım.
@@ -163,10 +144,10 @@ class MovieImage(models.Model):
         verbose_name_plural = 'Movie Images'
     # Class MovieImage Bitis
 
+
 class Login(models.Model):
     password = models.CharField(max_length=128)
     email = models.EmailField()
-
 
     def __str__(self):
         return str(self.email)
@@ -174,6 +155,7 @@ class Login(models.Model):
     class Meta:
         verbose_name = 'Login'
         verbose_name_plural = 'Logins'
+
 
 class Register(models.Model):
     ad = models.CharField(max_length=100)
@@ -188,6 +170,7 @@ class Register(models.Model):
         verbose_name = 'Register'
         verbose_name_plural = 'Registers'
 
+
 class oneCıkanFilmler(models.Model):
     isim = models.TextField(max_length=100)
     youtube_url = models.URLField()
@@ -196,5 +179,19 @@ class oneCıkanFilmler(models.Model):
         return self.isim
 
     class Meta:
-        verbose_name='OneCıkanFilm'
-        verbose_name_plural ='OneCıkanFilmler'
+        verbose_name = 'OneCıkanFilm'
+        verbose_name_plural = 'OneCıkanFilmler'
+
+
+class Members(models.Model):
+    register = models.ForeignKey('Register', on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to="media/", null=True, blank=True)
+    cinsiyet = models.CharField(max_length=10, choices=[('Erkek', 'Erkek'), ('Kadın', 'Kadın')], default='Erkek')
+    kayit_tarihi = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.register.ad} {self.register.soyad}"  # Register modelindeki ad ve soyad verilerini çekme
+
+    class Meta:
+        verbose_name = 'Üye'
+        verbose_name_plural = 'Üyeler'

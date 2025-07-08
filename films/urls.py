@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('register/',views.register_view ,  name='register'),
 
-    path('uyeler/',views.uyeler , name='uyeler'),
+    path('uyeler/',views.profil_listesi , name='uyeler'),
 
     path('yorumlar/' , views.yorumlar , name='yorumlar'),
 
@@ -21,7 +21,7 @@ urlpatterns = [
 
     path('logout/' , views.logout_views , name='logout'),
 
-    path('rastgele-film/', views.rastgele_film, name='rastgele_film')
+    path('rastgele-film/', views.rastgele_film, name='rastgele_film'),
 
 
 
