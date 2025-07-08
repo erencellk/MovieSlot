@@ -43,7 +43,7 @@
 
         <hr>
         <div class="yorum-container">
-            <!-- Sol: Yorum Formu -->
+
             <form id="form" method="POST" action="{% url 'film_more_info' pk=film.pk %}" class="yorum-bolumu">
                 {% csrf_token %}
                 <h3>Kullanıcı Yorumları</h3>
