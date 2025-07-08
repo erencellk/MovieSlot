@@ -195,3 +195,12 @@ class Members(models.Model):
     class Meta:
         verbose_name = 'Üye'
         verbose_name_plural = 'Üyeler'
+
+
+class KullaniciYorum(models.Model):
+    kullanici_adi = models.CharField(max_length=100)
+    yorum_metni = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Yorum yapan: {self.kullanici_adi}"
