@@ -637,8 +637,6 @@ body {
 }
 
 
-
-
 .profil-card {
     background-color: #fff;
     border-radius: 8px;
@@ -685,3 +683,28 @@ body {
     margin-top: 81px;
 }
 
+.arka-plan-yorumlar {
+    background-image: url("media/arkaplan_yorumlar.png");
+    background-size: cover;
+    height: 720px;
+    width: 100%;
+}
+
+.yorum-yap-kutusu {
+    position: absolute;
+    top: 350px;
+    left: 55px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional for contrast */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#yorum-yap-buton {
+    margin-left: 105px;
+    border-radius: 12px;
+    width: 100px;
+    height: 30px;
+}
