@@ -1,10 +1,27 @@
+{% extends 'films/base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    {% block title %}Yorumlar{% endblock %}
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
 </head>
 <body>
+<main>
+{% block content %}
+    <div class="arka-plan-yorumlar">
 
+    <h2 style="text-align: center; padding-top: 76px">💭Yorumlarınız Bizler İçin Önemli✔️</h2>
+
+    </div>
+
+    <div class="yorum-yap-kutusu">
+    <h3>Yorum Yapmak için Tıklayınız</h3>
+    <button id="yorum-yap-buton" type="button">Yorum Yap</button>
+    </div>
+
+{% endblock %}
+</main>>
 </body>
 </html>
