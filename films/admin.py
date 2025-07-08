@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Member, Film, Actor,  Review, Director, MovieImage, FilmMoreInfo, FilmComment,OscarAward , Login ,Register,oneCıkanFilmler
+from .models import Members, Film, Actor, Review, Director, MovieImage, FilmMoreInfo, FilmComment, OscarAward, Login, \
+    Register, oneCıkanFilmler
+
 
 # FilmComment için özel admin
 class FilmCommentAdmin(admin.ModelAdmin):
@@ -7,8 +9,16 @@ class FilmCommentAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'film')  # filtreleme imkanı
     search_fields = ('user_name', 'comment_text')  # arama çubuğunda aranabilir alanlar
 
-# Modelleri admin paneline kaydet
-admin.site.register(Member)
+
+class UyelerAdmin(admin.ModelAdmin):
+    list_display = ('register', 'cinsiyet', 'kayit_tarihi', 'profile_picture')
+    search_fields = ('register__ad', 'register__soyad', 'register__email')
+    list_filter = ('cinsiyet',)
+    ordering = ('-kayit_tarihi',)
+
+
+
+admin.site.register(Members, UyelerAdmin)
 admin.site.register(Film)
 admin.site.register(Actor)
 admin.site.register(Review)
@@ -19,4 +29,4 @@ admin.site.register(OscarAward)
 admin.site.register(Login)
 admin.site.register(Register)
 admin.site.register(oneCıkanFilmler)
-admin.site.register(FilmComment, FilmCommentAdmin)  # özel admin sınıfıyla kaydettik
+admin.site.register(FilmComment, FilmCommentAdmin)
