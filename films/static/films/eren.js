@@ -1,35 +1,37 @@
-document.addEventListener('DOMContentLoaded',()=>{
-    const  button = document.getElementById('film-oner-buton');
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('film-oner-buton');
     const filmBaslik = document.querySelector('.film-oneri h3');
     const iframe = document.querySelector('.video-container iframe');
 
-
-    button.addEventListener('click',()=>{
+    button.addEventListener('click', () => {
         fetch('/rastgele-film/')
-            .then(response =>response.json())
-            .then(data =>{
+            .then(response => response.json())
+            .then(data => {
                 filmBaslik.textContent = data.isim;
+                iframe.src = '';
                 iframe.src = data.youtube_url;
-            });
+            })
+            .catch(error => console.error('Film önerisi alınırken hata oluştu:', error));
     });
 });
-document.addEventListener('DOMContentLoaded', function() {
-      const savedEmail = localStorage.getItem('rememberedEmail');
-      if (savedEmail) {
-          document.getElementById('email').value = savedEmail;
-          document.querySelector('input[name="remember_me"]').checked = true;
-      }
-  });
 
- document.getElementById('form').addEventListener('submit', function() {
-      const remember = document.querySelector('input[name="remember_me"]').checked;
-      const email = document.getElementById('email').value;
+document.addEventListener('DOMContentLoaded', function () {
+    const savedEmail = localStorage.getItem('rememberedEmail');
+    if (savedEmail) {
+        document.getElementById('email').value = savedEmail;
+        document.querySelector('input[name="remember_me"]').checked = true;
+    }
+});
 
-      if (remember) {
-          localStorage.setItem('rememberedEmail', email);
-      } else {
-          localStorage.removeItem('rememberedEmail');
-      }
-  });
+document.getElementById('form').addEventListener('submit', function () {
+    const remember = document.querySelector('input[name="remember_me"]').checked;
+    const email = document.getElementById('email').value;
+
+    if (remember) {
+        localStorage.setItem('rememberedEmail', email);
+    } else {
+        localStorage.removeItem('rememberedEmail');
+    }
+});
 
 
